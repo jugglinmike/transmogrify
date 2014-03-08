@@ -1,7 +1,7 @@
 {
-  "name": "transmogrify-amd",
+  "name": "transmogrify",
   "version": "0.0.0",
-  "description": "Re-write AMD files to synchronously define modules on a namespace.",
+  "description": "Translate JavaScript module formats",
   "main": "lib",
   "license": "MIT-Expat",
   "directories": {

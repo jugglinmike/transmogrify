@@ -1,23 +1,12 @@
-# Transmogrify AMD
+# Transmogrify
 
-> Re-write AMD files to synchronously define modules on a global namespace
+> Translate JavaScript module formats
 
-[![Build Status](https://travis-ci.org/jugglinmike/transmogrify-amd.png)](https://travis-ci.org/jugglinmike/transmogrify-amd)
-
-Thanks to Greg Franko (@gfranko) for inspiring this work with [the "amdclean"
-project](https://github.com/gfranko/amdclean)!
-
-## Install
-
-Install using [NPM](http://npmjs.org/):
-
-``` bash 
-npm install transmogrify-amd
-```
+[![Build Status](https://travis-ci.org/jugglinmike/transmogrify.png)](https://travis-ci.org/jugglinmike/transmogrify)
 
 ## Example
 
-This is a sample AMD module:
+Given a strictly-defined JavaScript module like:
 
 ``` javascript
 define("moduleA", [], function() {
@@ -25,14 +14,15 @@ define("moduleA", [], function() {
 });
 ```
 
-Then you would use the following code to convert:
+This library can infer the module format translate the source into another
+output format:
 
 ``` javascript
 // Get the source and convert to a String.
 var source = fs.readFileSync("./the/above/file").toString();
 
 // Pass into the `clean` function, you will receive cleaned source of the file.
-require("transmogrify-amd").clean(source);
+var browser = require("transmogrify")(source, "browser");
 ```
 
 By default, the transmogrification defines all modules on the global scope.
@@ -42,6 +32,19 @@ window.moduleA = (function() {
 
 })();
 ```
+
+## Module Format Support
+
+Currently implemented:
+
+- (none)
+
+Planned:
+
+- [Asynchronous Module Definition](https://github.com/amdjs/amdjs-api)
+- [Common JS](http://wiki.commonjs.org/wiki/Modules)
+- [ECMAScript 6](http://wiki.ecmascript.org/doku.php?id=harmony:modules)
+- Synchronous browser global definition (output only)
 
 ## Tests
 
