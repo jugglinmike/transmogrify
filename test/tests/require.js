@@ -19,7 +19,9 @@ suite("require", function() {
         fixturesDir + testDir + "/expected.js"
       ).toString();
 
-      assert.astMatch(transmogrify(input, "browser").source, expected);
+      var actual = transmogrify(input, "amd", "browser").source;
+
+      assert.astMatch(actual, expected);
     });
   });
 });

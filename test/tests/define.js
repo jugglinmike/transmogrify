@@ -3,6 +3,9 @@ var fs = require("fs");
 var assert = require("../util/assert");
 var transmogrify = require("../..");
 
+// The browser transform is required for testing.
+//transmogrify.transforms.browser = require("../transform/browser");
+
 suite("define", function() {
 
   var fixturesDir = __dirname + "/../fixtures/define/";
@@ -16,12 +19,14 @@ suite("define", function() {
         fixturesDir + testDir + "/expected.js"
       ).toString();
 
-      test.skip("anonymous module", function() {
+      test("anonymous module", function() {
         var inputAnon = fs.readFileSync(
           fixturesDir + testDir + "/input-anon.js"
         ).toString();
 
-        assert.astMatch(transmogrify(inputAnon, "browser").source, expected);
+        var actual = transmogrify(inputAnon, "amd", "browser").source;
+
+        assert.astMatch(actual, expected);
       });
 
       test.skip("named module", function() {
@@ -29,7 +34,9 @@ suite("define", function() {
           fixturesDir + testDir + "/input-named.js"
         ).toString();
 
-        assert.astMatch(transmogrify(inputNamed, "browser").source, expected);
+        var actual = transmogrify(inputNamed, "amd", "browser").source;
+
+        assert.astMatch(actual, expected);
       });
     });
   });

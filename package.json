@@ -14,15 +14,16 @@
     "doc": "jsdoc -r -d docs/ lib/"
   },
   "devDependencies": {
-    "jshint": "~2.4.1",
-    "mocha": "~1.17.0",
-    "chai": "~1.8.1",
-    "jsdoc": "~3.3.0-alpha4",
-    "compare-ast": "~0.1.2"
+    "jshint": "~2.5.1",
+    "mocha": "~1.20.1",
+    "chai": "~1.9.1",
+    "jsdoc": "~3.3.0-alpha8",
+    "compare-ast": "~0.2.0"
   },
   "dependencies": {
     "falafel-harmony": "~0.3.1",
-    "jsdoc": "~3.3.0-alpha3",
-    "source-map": "~0.1.32"
+    "jsdoc": "~3.3.0-alpha8",
+    "source-map": "~0.1.34",
+    "jstransform": "facebook/jstransform"
   }
 }
